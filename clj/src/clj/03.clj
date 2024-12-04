@@ -9,10 +9,9 @@
 
 ;; Part Two
 (defn multi [in factor]
-  (let [x (Integer/parseInt (nth in 2))
-        y (Integer/parseInt (nth in 3))]
-    (println x y)
-    (* x y factor)))
+    (* (Integer/parseInt (nth in 2))
+       (Integer/parseInt (nth in 3))
+       factor))
 
 (let [m (re-seq #"(mul\((\d{1,3}),(\d{1,3})\))|(do\(\))|(don't\(\))" (memory))]
   (def enabled (atom 1))
