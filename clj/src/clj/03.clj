@@ -18,11 +18,7 @@
   (def sum (atom 0))
   (reduce + (map (fn [x]
          (cond
-           (= (first x) "do()") (do (println "do") (reset! enabled 1))
-           (= (first x) "don't()") (do (println "dont" ) (reset! enabled 0))
-           :else (do
-                   (println "add " (multi x @enabled) " to " @sum)
-                   (swap! sum + (multi x @enabled)))
-
-           )) m))
+           (= (first x) "do()") (reset! enabled 1)
+           (= (first x) "don't()") (reset! enabled 0)
+           :else (swap! sum + (multi x @enabled)))) m))
   @sum)
